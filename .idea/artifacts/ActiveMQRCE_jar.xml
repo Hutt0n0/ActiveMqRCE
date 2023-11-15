@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ActiveMQRCE:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ActiveMQRCE_jar</output-path>
+    <root id="archive" name="ActiveMQRCE.jar">
+      <element id="module-output" name="ActiveMQRCE" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/apache/activemq/activemq-all/5.15.9/activemq-all-5.15.9.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
