@@ -9,8 +9,17 @@ public class CMDResponse {
 
     public void test(String cmd) throws IOException {
         String result = "";
+        String process = "";
+        String arg = "";
+        if (System.getProperty("os.name").toLowerCase().indexOf("windows") >= 0) {
+            process = "cmd.exe";
+            arg = "/c";
+        }else{
+            process = "/bin/sh";
+            arg = "-c";
+        }
         try {
-            ProcessBuilder processBuilder = new ProcessBuilder(new String[]{"/bin/sh","-c",cmd});
+            ProcessBuilder processBuilder = new ProcessBuilder(new String[]{process,arg,cmd});
             Process start = processBuilder.start();
             InputStream inputStream = start.getInputStream();
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();

