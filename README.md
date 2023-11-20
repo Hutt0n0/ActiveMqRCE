@@ -29,7 +29,7 @@
 ![img.png](img.png)
 
 ## 11.17号/admin路由下增加内存马注入
-需要攻击者事先访问admin路由
+需要攻击者事先访问admin路由，才会有如下调用链，才能成功注入
 ```
 TargetObject = {java.lang.Thread} 
   ---> group = {java.lang.ThreadGroup} 
